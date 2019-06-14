@@ -12,16 +12,32 @@
           </div>
         </div>
         <div class="col">
-          <form @submit.prevent="addBoard">
-            <input type="text" placeholder="title" v-model="newBoard.title" required>
-            <input type="text" placeholder="description" v-model="newBoard.description">
-            <button type="submit">Create Board</button>
-          </form>
-
+          <button class="btn btn-outline-secondary" style="color: whitesmoke" data-toggle="modal"
+            data-target="#boardModal" title="Create A Board" type="submit"><i class="fas fa-plus"></i></button>
+          <button class="btn btn-secondary" @click="logout">Log Out</button>
         </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="boardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog cascading-modal" role="document">
+        <div class="modal-content">
+          <div class="modal-header info-color white-text">
+            <h6 class="title"> Create a Board</h6>
+            <form @submit.prevent="addBoard">
+              <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">x</span></button>
+              <input type="text" class="form-control" placeholder="title" v-model="newBoard.title" required>
+              <input type="text" class="form-control" placeholder="description" v-model="newBoard.description">
+              <button class="btn btn-secondary" type="submit" data-dismiss="modal">Create Board</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
+    </div>
+    <!-- This is where Boards Render -->
     <div class="container" id="board-container">
       <div class="row">
         <div class="col" v-for="board in boards" :key="board._id">
@@ -78,6 +94,9 @@
       },
       deleteBoard(boardId) {
         this.$store.dispatch("deleteBoard", boardId);
+      },
+      logout() {
+        this.$store.dispatch('logout', this.creds)
       }
     }
   };
