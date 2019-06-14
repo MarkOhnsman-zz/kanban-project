@@ -1,18 +1,22 @@
 import BoardService from '../services/BoardService'
 import express from 'express'
 import { Authorize } from '../middlewear/authorize'
+import ListService from '../services/ListService'
 
 //import service and create an instance
 let _service = new BoardService()
 let _repo = _service.repository
+let _listService = new ListService()
+let _listRepo = _listService.repository
+
 
 //PUBLIC
 export default class BoardsController {
   constructor() {
     this.router = express.Router()
       .get('', this.getAll)
-      .get('/:id', this.getById)
       .use(Authorize.authenticated)
+      .get('/:id/lists', this.getLists)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -32,9 +36,9 @@ export default class BoardsController {
     catch (err) { next(err) }
   }
 
-  async getById(req, res, next) {
+  async getLists(req, res, next) {
     try {
-      let data = await _repo.findOne({ _id: req.params.id, authorId: req.session.uid })
+      let data = await _listRepo.find({ boardId: req.params.id, authorId: req.session.uid })
       return res.send(data)
     } catch (error) { next(error) }
   }
@@ -59,10 +63,12 @@ export default class BoardsController {
 
   async delete(req, res, next) {
     try {
-      await _repo.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
+      let board = await _repo.findOne({ _id: req.params.id, authorId: req.session.uid })
+      await board.remove()
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }
 }
+
 
 
