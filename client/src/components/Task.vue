@@ -1,12 +1,12 @@
 <template>
-  <div class="task">
+  <div class="card task">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <h3>{{taskData.title}}<i class="fas fa-eraser" @click="deleteTask"></i></h3>
         <p>{{taskData.description}}</p>
 
 
-        <!-- complete list drop down menu!! -->
+        <!-- complete list drop down menu -->
         <select v-model="selected" @change="moveTask">
           <option disabled value="">Move Task...</option>
           <option v-for="list in lists" :value="list._id">{{list.title}}</option>
@@ -78,6 +78,7 @@
 
   }
 </script>
+
 <style>
   .task {
     color: #3f4430;
