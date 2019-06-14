@@ -1,9 +1,9 @@
 <template>
-  <div class="board container-fluid">
+  <div class="board-view container-fluid">
     <div class="row" id="board-nav">
       <div class="col">
         <p>
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+          <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample"
             aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-plus"></i>
           </button>
@@ -88,5 +88,8 @@
     background-attachment: fixed;
     background-image: url(https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
     min-height: 100vh;
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 </style>

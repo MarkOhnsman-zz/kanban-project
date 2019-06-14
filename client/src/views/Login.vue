@@ -1,8 +1,11 @@
 <template>
   <div class="login container-fluid">
-    <div class="row">
-      <div class="col-4 offset-4">
-        <div class="card" style="width: 18rem;">
+    <header id="title">
+      Fidget
+    </header>
+    <div class="row d-flex justify-content-center">
+      <div class="col-4">
+        <div class="card">
           <div class="card-body">
             <form v-if="loginForm" @submit.prevent="loginUser">
               <input type="email" v-model="creds.email" placeholder="email">
@@ -63,15 +66,25 @@
   }
 
   .card {
-    background-color: rgba(0, 0, 0, .4);
+    background-color: #3f443041;
     margin-top: 200px;
-    color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  #title {
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    color: #3f4430;
   }
 
   .login {
     background-image: url(https://images.unsplash.com/photo-1482192505345-5655af888cc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80);
     min-height: 100vh;
-    background-position: cover;
     background-attachment: fixed;
+    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 </style>
