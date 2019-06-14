@@ -48,16 +48,13 @@
     },
     computed: {
       comments() {
-        // let comments = this.$store.state.tasks[this.taskData.listId] || []
         let comments = this.taskData.comments
-        console.log('this is the comment array', comments)
         return comments
       },
       lists() {
         return this.$store.state.lists
       }
-      //computed for lists
-      //lookup lists dropdown select whith v-model="selected"
+
     },
     methods: {
       submitComment({ target: form }) {
@@ -73,15 +70,17 @@
         this.$store.dispatch('deleteComment', this.taskData)
       },
       moveTask() {
-        debugger
         this.taskData.oldId = this.taskData.listId
         this.taskData.listId = this.selected
         this.$store.dispatch('moveTask', this.taskData)
-      } //complete moveTask
-      //movetask
-      // this.taskData.oldId=this.taskdata.listId
-      // this.taskdata.listId= this.selected
+      }
     }
 
   }
 </script>
+<style>
+  .task {
+    color: #3f4430;
+    margin: 20px;
+  }
+</style>

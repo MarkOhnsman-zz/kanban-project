@@ -136,7 +136,6 @@ export default new Vuex.Store({
     async addList({ commit, dispatch }, payload) {
       try {
         let res = await api.post('/lists', payload)
-        debugger
         dispatch('getLists', payload.boardId)
       } catch (error) {
         console.error(error)
@@ -147,7 +146,6 @@ export default new Vuex.Store({
     async deleteList({ commit, dispatch }, list) {
       try {
         let res = await api.delete('/lists/' + list._id)
-        debugger
         dispatch('getLists', list.boardId)
       } catch (error) { console.error(error) }
     },
@@ -187,11 +185,6 @@ export default new Vuex.Store({
         dispatch('getTasks', payload.oldId)
       } catch (error) { console.error(error) }
     },
-
-    //  fire put request to tasks/:id
-    //dispatch to getTasks with task.listID
-    //dispatch to getTasks with old ListID
-
 
     //#endregion
     //#region --COMMENTS--
