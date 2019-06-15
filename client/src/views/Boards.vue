@@ -65,12 +65,21 @@
   export default {
     name: "boards",
     created() {
-      //blocks users not logged in
-      if (!this.$store.state.user._id) {
-        // this.$router.push({ name: "login" });
-        timeout: 3000;
-      }
+      setTimeout(() => {
+        if (!this.$store.state.user._id) {
+          this.$router.push({ name: "login" })
+        }
+      }, 3000)
     },
+    //FYI: above was referenced from food-is-fun like Mark told us to EOD Friday for correct timeout, below is groups
+    // created() {
+    //   //blocks users not logged in
+    //   if (!this.$store.state.user._id) {
+    //     // this.$router.push({ name: "login" });
+    //     timeout: 3000;
+    //   }
+    //  },
+
     mounted() {
       this.$store.dispatch("getBoards");
     },

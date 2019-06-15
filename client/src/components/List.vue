@@ -1,29 +1,30 @@
 <template>
-  <div class="card list-card">
-    <div class="card-header list-title">
-      <div class="list-title-text">
-        {{listData.title}}
-      </div>
-      <button @click="deleteList" class="btn btn-danger" title="Delete List">
-        <i class="fas fa-trash-alt"></i>
-      </button>
-    </div>
-    <!-- Render Here -->
-    <task v-for="task in tasks" :taskData="task" :listData="listData" />
-
-    <!-- Maybe something will go here -->
-
-    <!-- Task From -->
-    <form class="add-task-form" @submit.prevent="submitTask">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Title" v-model='newTask.title'>
-        <input type="text" class="form-control" placeholder="Description" v-model='newTask.description'>
-        <div class="input-button">
-          <button type="submit" class="btn btn-secondary mb-2"><i class="fas fa-plus"></i></button>
+  <div class="col-4">
+    <div class="card list-card">
+      <div class="card-header list-title">
+        <div class="list-title-text">
+          {{listData.title}}
         </div>
+        <button @click="deleteList" class="btn btn-danger" title="Delete List">
+          <i class="fas fa-trash-alt"></i>
+        </button>
       </div>
-    </form>
-  </div>
+      <!-- Render Here -->
+      <task v-for="task in tasks" :taskData="task" :listData="listData" />
+
+      <!-- Maybe something will go here -->
+
+      <!-- Task From -->
+      <form class="add-task-form" @submit.prevent="submitTask">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Title" v-model='newTask.title'>
+          <input type="text" class="form-control" placeholder="Description" v-model='newTask.description'>
+          <div class="input-button">
+            <button type="submit" class="btn btn-secondary mb-2"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
