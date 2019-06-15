@@ -18,10 +18,13 @@
       </div>
     </div>
     <!-- Modal -->
-    <!-- ok here was the problem there -->
-    <!-- the line I just added back was preventing form submission data-dismiss="boardModal" -->
+    <!-- ok here was the problem there . k -->
+    <!-- the line I just added back was preventing form submission, so here is how to do that with allowing the form to submit first.... I deleted the line - why would add list no longer work now, though, also? -->
+    <!-- next problem I am going to work on , i had to create a board first -->
+    <!-- k pause on making changes for a sec, its causing errors since we are both  -->
 
-    <div class="modal fade" id="boardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <!--                                   vvv data binding here -->
+    <div class="modal fade" id="boardModal" :tabindex="tabIndex" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
       <div class="modal-dialog cascading-modal">
         <div class="modal-content">
@@ -92,7 +95,8 @@
         newBoard: {
           title: "",
           description: ""
-        }
+        },
+        tabIndex: -1
       };
     },
     computed: {
@@ -102,25 +106,17 @@
     },
     methods: {
       addBoard() {
-        debugger
         this.$store.dispatch("addBoard", this.newBoard);
         this.newBoard = { title: "", description: "" };
-      },
-      deleteBoard(boardId) {
-        this.$store.dispatch("deleteBoard", boardId);
-      },
-      logout() {
-        this.$store.dispatch('logout', this.creds)
+        this.tabIndex++
+        logout() {
+          this.$store.dispatch('logout', this.creds)
+        }
       }
-    }
-  };
-</script>
-<style>
-  #boards-nav {
-    height: 80px;
-    background-color: rgba(10, 10, 10, .3);
-    z-index: 1;
-    background-position: center;
+    };
+    background- color: rgba(10, 10, 10, .3);
+  z - index: 1;
+  background - position: center;
 
   }
 
@@ -129,19 +125,19 @@
     bottom: 0;
   }
 
-  .board-name {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.5rem;
+  .board - name {
+    font - family: 'Pacifico', cursive;
+    font - size: 1.5rem;
     color: whitesmoke;
   }
 
   .boards {
-    background-image: url(https://images.unsplash.com/photo-1470770903676-69b98201ea1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-    background-color: rgb(92, 95, 94);
-    min-height: 100vh;
-    background-attachment: fixed;
-    background-size: contain;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background - image: url(https://images.unsplash.com/photo-1470770903676-69b98201ea1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+      background - color: rgb(92, 95, 94);
+    min - height: 100vh;
+    background - attachment: fixed;
+    background - size: contain;
+    background - size: cover;
+    background - repeat: no - repeat;
   }
-</style>
+</style >
