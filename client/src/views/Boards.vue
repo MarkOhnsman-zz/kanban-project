@@ -114,7 +114,10 @@
         }
       }
     };
-    background- color: rgba(10, 10, 10, .3);
+
+</script>
+<style>
+  background- color: rgba(10, 10, 10, .3);
   z - index: 1;
   background - position: center;
 
@@ -133,11 +136,11 @@
 
   .boards {
     background - image: url(https://images.unsplash.com/photo-1470770903676-69b98201ea1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-      background - color: rgb(92, 95, 94);
+    background - color: rgb(92, 95, 94);
     min - height: 100vh;
     background - attachment: fixed;
     background - size: contain;
     background - size: cover;
     background - repeat: no - repeat;
   }
-</style >
+</style>
