@@ -8,7 +8,6 @@
         <div class="col" id="quote" style="font-size: 1.3rem; font-family: 'Comfortaa'">
           <div class="d-flex justify-content-center" id="tagline">
             Create some clarity!
-
           </div>
         </div>
         <div class="col">
