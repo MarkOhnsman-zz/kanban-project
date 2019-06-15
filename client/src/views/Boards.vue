@@ -18,9 +18,12 @@
       </div>
     </div>
     <!-- Modal -->
+    <!-- ok here was the problem there -->
+    <!-- the line I just added back was preventing form submission data-dismiss="boardModal" -->
+
     <div class="modal fade" id="boardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog cascading-modal" role="document">
+      <div class="modal-dialog cascading-modal">
         <div class="modal-content">
           <div class="modal-header info-color white-text">
             <h6 class="title"> Create a Board</h6>
@@ -29,7 +32,7 @@
                 <span aria-hidden="true">x</span></button>
               <input type="text" class="form-control" placeholder="title" v-model="newBoard.title" required>
               <input type="text" class="form-control" placeholder="description" v-model="newBoard.description">
-              <button class="btn btn-secondary" type="submit" data-dismiss="modal">Create Board</button>
+              <button class="btn btn-secondary" type="submit">Create Board</button>
             </form>
           </div>
         </div>
@@ -99,6 +102,7 @@
     },
     methods: {
       addBoard() {
+        debugger
         this.$store.dispatch("addBoard", this.newBoard);
         this.newBoard = { title: "", description: "" };
       },
